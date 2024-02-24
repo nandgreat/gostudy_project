@@ -41,7 +41,7 @@
                     <a class="nav-link" href="{{route('registration')}}">Create Account</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" style="background-color: #0E3051; padding-right:20px; border-radius:8px; padding-left:20px; color: white !important" href="#">Donate</a>
+                    <a class="nav-link" style="background-color: #0E3051; padding-right:20px; border-radius:8px; padding-left:20px; color: white !important" href="{{route('sponsor')}}">Donate</a>
                 </li>
             </ul>
         </div>
