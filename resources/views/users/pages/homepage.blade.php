@@ -97,7 +97,7 @@
         <div class="row">
             <div class="col-md-6" style="margin-top: 40px; flex-direction: column; display:flex; justify-content: center; align-items: flex-start;">
                 <div>
-                    <iframe width="620" height="315" style="margin-right: 20px;" src="https://www.youtube.com/watch?v=dTnyIYnl19U&t=2322s"></iframe>
+                    <iframe width="620" height="315" style="margin-right: 20px;" src="https://www.youtube.com/embed/dTnyIYnl19U"></iframe>
                 </div>
                 <div style="margin-top: 50px;">
                     <h2 style="color:white;font-weight:900;font-size:65px">GO STUDY<br>CHARITY</h2>
