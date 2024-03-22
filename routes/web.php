@@ -126,7 +126,8 @@ Route::post('/process-forgotpassword', [registrationcontroller::class, 'processF
 Route::get('/user/registration/show', [registrationcontroller::class, 'registrationshow'])->name('registration');
 Route::post('/user/store', [registrationcontroller::class, 'userstore'])->name('user.store');
 Route::get('/user/logout', [registrationcontroller::class, 'logout'])->name('user.logout');
-Route::get('/sponsor', [SponsorController::class, 'sponsorPage'])->name('sponsor');
+Route::get('/donate', [SponsorController::class, 'DonatePage'])->name('donate');
+Route::get('/sponsors', [SponsorController::class, 'sponsorPage'])->name('sponsors');
 Route::get('/events', [SponsorController::class, 'eventPage'])->name('events');
 Route::get('/testimonial', [SponsorController::class, 'testimonialPage'])->name('testimonial');
 Route::get('/cash-donation', [SponsorController::class, 'cashDonationPage'])->name('cash-donation');

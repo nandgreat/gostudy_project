@@ -6,6 +6,89 @@
 <h1>Users</h1>
 @stop
 
+
+<style type="text/css">
+    @media (max-width:991.98px) {
+        .padding {
+            padding: 1.5rem
+        }
+    }
+
+    @media (max-width:767.98px) {
+        .padding {
+            padding: 1rem
+        }
+    }
+
+    .padding {
+        padding: 5rem
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        width: 350px;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid #d2d2dc;
+        border-radius: 11px;
+        -webkit-box-shadow: 0px 0px 5px 0px rgb(249, 249, 250);
+        -moz-box-shadow: 0px 0px 5px 0px rgba(212, 182, 212, 1);
+        box-shadow: 0px 0px 5px 0px rgb(161, 163, 164);
+    }
+
+    .card .card-body {
+        padding: 1rem 1rem;
+    }
+
+    .card-body {
+        flex: 1 1 auto;
+        padding: 1.25rem
+    }
+
+    p {
+        font-size: 0.875rem;
+        margin-bottom: .5rem;
+        line-height: 1.5rem
+    }
+
+    h4 {
+        line-height: .2 !important;
+    }
+
+    .profile {
+        margin-top: 16px;
+        margin-left: 11px;
+    }
+
+    .profile-pic {
+        width: 58px;
+    }
+
+    .cust-name {
+        font-size: 18px;
+    }
+
+    .cust-profession {
+        font-size: 10px;
+    }
+
+
+
+    .items {
+        width: 90%;
+        margin: 0px auto;
+        margin-top: 100px
+    }
+
+    .slick-slide {
+        margin: 10px
+    }
+</style>
+
 @section('content')
 
 <div class="row" style="background-color: #0E3051;">
@@ -131,23 +214,53 @@
     </div>
 </section>
 
-<hr style="color: red; border-color: #E5104D; border-width:2px;" />
-
 <section style="padding-top: 80px;padding-bottom:80px;">
-    <div class="container">
 
-        <div class="row">
-
-            <div class="col-md-8 offset-2" style=" display:flex;justify-content: center;flex-direction:column">
-                <img height="auto" width="100%" alt="" style="width: 100%; margin:0px;" src="{{ asset('frontend/assets/img') }}/sponsors_image.png" />
-
-            </div>
-        </div>
 </section>
 
 <hr style="color: red; border-color: #E5104D; border-width:2px;" />
 
 <section style="padding-top: 80px;padding-bottom:80px;">
+
+    <div class="row">
+        <div class="container">
+            <div class="col-md-8 offset-2" style=" display:flex;justify-content: center;flex-direction:column">
+                <img height="auto" width="100%" alt="" style="width: 100%; margin:0px;" src="{{ asset('frontend/assets/img') }}/sponsors_image.png" />
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="items">
+
+        <div class="card" style="height: 200px;">
+            <img src="{{ asset('frontend/assets/img') }}/logo_one.jpeg" width="100%" height="100%">
+        </div>
+
+        <div class="card" style="height: 200px;">
+            <img src="{{ asset('frontend/assets/img') }}/logo_two.png" width="100%" height="100%">
+        </div>
+
+        <div class="card" style="height: 200px;">
+            <img src="{{ asset('frontend/assets/img') }}/logo_three.jpeg" width="100%" height="100%">
+        </div>
+
+        <div class="card" style="height: 200px;">
+            <img src="{{ asset('frontend/assets/img') }}/logo_one.jpeg" width="100%" height="100%">
+        </div>
+
+        <div class="card" style="height: 200px;">
+            <img src="{{ asset('frontend/assets/img') }}/logo_two.png" width="100%" height="100%">
+        </div>
+
+
+    </div>
+</section>
+
+<hr style="color: red; border-color: #E5104D; border-width:2px;" />
+
+<!-- <section style="padding-top: 80px;padding-bottom:80px;">
     <div class="container">
 
         <div class="row">
@@ -166,7 +279,7 @@
             </div>
 
         </div>
-</section>
+</section> -->
 
 <section style="padding-top: 80px;padding-bottom:80px;">
     <div class="container">
@@ -196,7 +309,49 @@
 @section('myjsfile')
 <!-- Styles -->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}" defer></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
 <script src="{{ asset('js/main.js') }}" defer></script>
+
+
+<script>
+    $(document).ready(function() {
+
+        $('.items').slick({
+            dots: true,
+            infinite: true,
+            speed: 800,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            slidesToShow: 4,
+            slidesToScroll: 4,
+            responsive: [{
+                    breakpoint: 1024,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 600,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 480,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+
+            ]
+        });
+    });
+</script>
 
 @stop

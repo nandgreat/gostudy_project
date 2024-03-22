@@ -14,9 +14,9 @@ class SponsorController extends Controller
 {
     //
 
-    public function sponsorPage()
+    public function DonatePage()
     {
-        return view('users.pages.sponsor_page');
+        return view('users.pages.donate_page');
     }
 
     public function eventPage()

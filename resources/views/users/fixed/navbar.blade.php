@@ -28,18 +28,28 @@
                     <a class="nav-link" href="#">Testimonials</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('sponsor')}}">Sponsors</a>
+                    <a class="nav-link" href="{{route('sponsors')}}">Sponsors</a>
                 </li>
             </ul>
             <ul class="navbar-nav ml-auto">
+
+                @if(!Auth::check())
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('loginshow')}}">Login</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('registration')}}">Create Account</a>
                 </li>
+                @else
                 <li class="nav-item">
-                    <a class="nav-link" style="background-color: #0E3051; padding-right:20px; border-radius:8px; padding-left:20px; color: white !important" href="#">Donate</a>
+                    <a class="nav-link" href="#">{{auth()->user()->name}}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('user.logout')}}">Logout</a>
+                </li>
+                @endif
+                <li class="nav-item">
+                    <a class="nav-link" style="background-color: #0E3051; padding-right:20px; border-radius:8px; padding-left:20px; color: white !important" href="{{route('donate')}}">Donate</a>
                 </li>
             </ul>
         </div>

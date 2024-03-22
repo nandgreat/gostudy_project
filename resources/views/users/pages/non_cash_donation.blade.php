@@ -118,7 +118,9 @@
 
         <div class="row" style="flex-direction: row; justify-content: space-between;">
 
+            @if(Auth::check())
             <button type="button" style="padding-top:10px; padding-bottom:10px;" class="btn btn-primary mt-sm-3 fadeIn fouth">Save</button>
+            @endif
             <button type="button" id="payNow" style="padding-top:10px; padding-bottom:10px;" class="btn btn-primary mt-sm-3 fadeIn fouth">Pay Now</button>
 
         </div>
@@ -183,6 +185,7 @@
     ];
 
     var cartItems = [];
+    var total = 0;
 
 
     function generateItems() {
@@ -211,7 +214,7 @@
     function addToCart(myitem) {
         console.log(myitem);
 
-        var total = 0;
+        total = 0;
 
         $('#cartItemsDiv').html('<h4 style="color: white;font-weight:bold">Cart Items</h4>' +
             '<div style="background-color: white;height:2px;margin-bottom:20px;margin-top:20px"></div>' +
@@ -250,51 +253,46 @@
 
         console.log(cartItems);
 
-
-        for (var x = 0; x < cartItems.length; x++) {
-
-            total += cartItems[x].price;
-
-            $('#cartItemsDiv').append('<div style="display:flex;flex-direction:row; margin-bottom: 10px; background-color: #888; padding:10px; justify-content: space-between; align-items: center">' +
-                '<div style="flex:1">' +
-                '    <h5>' +
-                '        <font color="white">' + cartItems[x].item + '</font>' +
-                '    </h5>' +
-                '</div>' +
-                '<div style="flex:1; display:flex; justify-content:flex-end">' +
-                '    <h5>' +
-                '        <font color="white">' + cartItems[x].quantity + '</font>' +
-                '    </h5>' +
-                '</div>' +
-                '<div style="flex:1; display:flex; justify-content:flex-end">' +
-                '    <h5>' +
-                '        <font color="white">$' + cartItems[x].price + '</font>' +
-                '       <button onclick="removeFromCart(\'' + cartItems[x].item + '\')" class="btn btn-danger" style="margin:0; padding-right:20px; padding-left:20px; padding-top:10px; padding-bottom:10px"> x </button' +
-                '    </h5>' +
-                '</div>' +
-                '</div>');
-        }
-
-        $('#cartItemsDiv').append('<div style="display:flex;flex-direction:row; margin-bottom: 10px; padding:10px; justify-content: space-between; align-items: center">' +
-            '<div style="flex:1">' +
-            '    <h5>' +
-            '        <font color="white">Total</font>' +
-            '    </h5>' +
-            '</div>' +
-            '<div style="flex:1; display:flex; justify-content:flex-end">' +
-            '    <h5>' +
-            '        <font color="white">$' + total + '</font>' +
-            '    </h5>' +
-            '</div>' +
-            '</div>');
-
-
+        renderCart();
     }
 
     function removeFromCart(myitem) {
         console.log(myitem);
 
-        var total = 0;
+        total = 0;
+
+        const index = cartItems.findIndex(item => item.item == myitem);
+
+        console.log(index);
+        if (index > -1) { // only splice array when item is found
+            cartItems.splice(index, 1); // 2nd parameter means remove one item only
+        }
+
+        renderCart();
+    }
+
+    function updatedCart(y) {
+        var inputElements = document.getElementsByTagName("input");
+
+        var thirdInputValue = inputElements[y].value;
+
+        if (thirdInputValue == '') return;
+
+        total = 0;
+
+        let currentItem = cartItems[y].item;
+        
+        let newItem = myCars.find((element) => element.item == currentItem);
+
+        let currentPrice = newItem.price;
+
+        cartItems[y].price = currentPrice * Number(thirdInputValue);
+        cartItems[y].quantity = Number(thirdInputValue);
+
+        renderCart();
+    }
+
+    function renderCart() {
 
         $('#cartItemsDiv').html('<h4 style="color: white;font-weight:bold">Cart Items</h4>' +
             '<div style="background-color: white;height:2px;margin-bottom:20px;margin-top:20px"></div>' +
@@ -310,15 +308,6 @@
             '    </div>' +
             '</div>');
 
-
-
-        const index = cartItems.findIndex(item => item.item == myitem);
-
-        console.log(index);
-        if (index > -1) { // only splice array when item is found
-            cartItems.splice(index, 1); // 2nd parameter means remove one item only
-        }
-
         for (var x = 0; x < cartItems.length; x++) {
 
             total += cartItems[x].price;
@@ -331,7 +320,7 @@
                 '</div>' +
                 '<div style="flex:1; display:flex; justify-content:flex-end">' +
                 '    <h5>' +
-                '        <font color="white">' + cartItems[x].quantity + '</font>' +
+                '        <input style="color:white; width: 40px; padding:5px" oninput="updatedCart(' + x + ')" value="' + cartItems[x].quantity + '"/>' +
                 '    </h5>' +
                 '</div>' +
                 '<div style="flex:1; display:flex; justify-content:flex-end">' +
@@ -356,11 +345,7 @@
             '</div>' +
             '</div>');
 
-        console.log(cartItems);
-
-
     }
-
 
     // get the div element
     $('#100d').on('click', function(e) {

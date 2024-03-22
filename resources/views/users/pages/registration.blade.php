@@ -64,6 +64,17 @@
                   <input type="text" id="full_name" placeholder="First Name" class="fadeIn first col-md-12" name='full_name' autofocus="">
                   <label class="mt-3" for="email">Email address</label>
                   <input type="email" id="email" placeholder="Email address" class="fadeIn first col-md-12" name='email' autofocus="">
+
+                  <div class="col-md-12 form-group" style="margin-top: 40px; display:flex;justify-content: center;flex-direction:column" id="frequencyDiv">
+                    <label class="" for="email">User Type</label>
+                    <select id="payment_intervals" class="form-control" style="background-color: #0E3051; color:white; height:60px" name="payment_intervals" onchange="showHideDiv()">
+                      <option value="">::Select User Type::</option>
+                      <option value="donor">Donor</option>
+                      <option value="sponsor">Sponsor</option>
+                      <option value="sponsor">Student</option>
+                    </select>
+                  </div>
+
                   <label class="mt-3" for="first_name">Password</label>
                   <input type="password" id="password" placeholder="Password" class="fadeIn first col-md-12" name='password' autocomplete="off" autofocus="">
                   <label class="mt-3" for="first_name">Confirm Password</label>
